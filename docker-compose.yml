@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  bot:
+    image: gmeetbot:tag
+    container_name: gmeetbot
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+      - GOOGLE_CLIENT_SECRET_PATH=/app/client_secret.json
+    volumes:
+      - .:/app  # Ensure app files are copied correctly
+    restart: always
+
